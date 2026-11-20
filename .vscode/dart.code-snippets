@@ -1,0 +1,37 @@
+{
+  "Riverpod Class Notifier": {
+    "prefix": "riv",
+    "description": "Create a Riverpod generator class notifier with part file",
+    "body": [
+      "import 'package:dio/dio.dart';",
+      "import 'package:riverpod_annotation/riverpod_annotation.dart';",
+      "",
+      "part '${TM_FILENAME_BASE}.g.dart';",
+      "",
+      "@Riverpod(keepAlive: true)",
+      "Dio dio(Ref ref) {",
+      "final dio = Dio(",
+      "BaseOptions(",
+      "baseUrl: '',",
+      "connectTimeout: const Duration(seconds: 15),",
+      "receiveTimeout: const Duration(seconds: 15),",
+      "headers: {",
+      "'Content-Type': 'application/json',",
+      "'Accept': 'application/json',",
+      "},",
+      "),",
+      ");",
+      "",
+      "dio.interceptors.add(",
+      "LogInterceptor(",
+      "requestHeader: false,",
+      "responseHeader: false,",
+      "requestBody: false,",
+      "responseBody: false,",
+      "),",
+      ");",
+      "return dio;",
+      "}"
+    ]
+  }
+}
